@@ -1,0 +1,303 @@
+GitHub Commands:
+SETUP
+Configuring user information used across all local repositories
+git config --global user.name “[firstname lastname]”
+set a name that is identifiable for credit when review version history
+git config --global user.email “[valid-email]”
+set an email address that will be associated with each history marker
+git config --global color.ui auto
+set automatic command line coloring for Git for easy reviewing
+
+SETUP & INIT
+Configuring user information, initializing and cloning repositories
+git init
+initialize an existing directory as a Git repository
+git clone [url]
+retrieve an entire repository from a hosted location via URL
+
+INSPECT & COMPARE
+Examining logs, diffs and object information
+git log
+show the commit history for the currently active branch
+git log branchB..branchA
+show the commits on branchA that are not on branchB
+git log --follow [file]
+show the commits that changed file, even across renames
+git diff branchB...branchA
+show the diff of what is in branchA that is not in branchB
+git show [SHA]
+show any object in Git in human-readable format
+
+TRACKING PATH CHANGES
+Versioning file removes and path changes
+git rm [file]
+delete the file from project and stage the removal for commit
+git mv [existing-path] [new-path]
+change an existing file path and stage the move
+git log --stat -M
+show all commit logs with indication of any paths that moved
+
+IGNORING PATTERNS
+Preventing unintentional staging or commiting of files
+
+logs/
+*.notes
+pattern*/
+Save a file with desired paterns as .gitignore with either direct string
+matches or wildcard globs.
+
+git config --global core.excludesfile [file]
+system wide ignore patern for all local repositories
+
+
+STAGE & SNAPSHOT
+Working with snapshots and the Git staging area
+git status
+show modified files in working directory, staged for your next commit
+git add [file]
+add a file as it looks now to your next commit (stage)
+git reset [file]
+unstage a file while retaining the changes in working directory
+git diff
+diff of what is changed but not staged
+git diff --staged
+diff of what is staged but not yet commited
+git commit -m “[descriptive message]”
+commit your staged content as a new commit snapshot
+
+BRANCH & MERGE
+Isolating work in branches, changing context, and integrating changes
+git branch
+list your branches. a * will appear next to the currently active branch
+git branch [branch-name]
+create a new branch at the current commit
+git checkout
+switch to another branch and check it out into your working directory
+git merge [branch]
+merge the specified branch’s history into the current one
+git log
+show all commits in the current branch’s history
+
+SHARE & UPDATE
+Retrieving updates from another repository and updating local repos
+git remote add [alias] [url]
+add a git URL as an alias
+git fetch [alias]
+fetch down all the branches from that Git remote
+git merge [alias]/[branch]
+merge a remote branch into your current branch to bring it up to date
+git push [alias] [branch]
+Transmit local branch commits to the remote repository branch
+git pull
+fetch and merge any commits from the tracking remote branch
+
+REWRITE HISTORY
+Rewriting branches, updating commits and clearing history
+git rebase [branch]
+apply any commits of current branch ahead of specified one
+git reset --hard [commit]
+clear staging area, rewrite working tree from specified commit
+
+TEMPORARY COMMITS
+Temporarily store modified, tracked files in order to change branches
+git stash
+Save modified and staged changes
+git stash list
+list stack-order of stashed file changes
+git stash pop
+write working from top of stash stack
+git stash drop
+discard the changes from top of stash stack
+
+Example:
+satya@LAPTOP-QLSC2R3L MINGW64 ~/OneDrive/Documents (master)
+$ git config --global user.email "afrozkhanmyworkspace@gmail.com"
+
+satya@LAPTOP-QLSC2R3L MINGW64 ~/OneDrive/Documents (master)
+$ git config --global user.email "afrozkhanmyworkspace"
+
+$ git commit -m "Devops_Commands.txt File added"
+[master (root-commit) 5a86b06] Devops_Commands.txt File added
+ 1 file changed, 110 insertions(+)
+ create mode 100644 DevOps_Commands.txt
+
+satya@LAPTOP-QLSC2R3L MINGW64 ~/OneDrive/Documents (master)
+$ git log
+commit 5a86b06eeb1384309ca9945cbe4726b7c30d5a3d (HEAD -> master)
+Author: S SATYA SAGAR <afrozkhanmyworkspace>
+Date:   Tue Nov 12 14:58:14 2024 +0530
+
+    Devops_Commands.txt File added
+
+
+satya@LAPTOP-QLSC2R3L MINGW64 ~/OneDrive/Documents (master)
+$ git remote add origin https://github.com/afrozkhanmyworkspace/project.git
+
+satya@LAPTOP-QLSC2R3L MINGW64 ~/OneDrive/Documents (master)
+$ git branch -M main
+
+satya@LAPTOP-QLSC2R3L MINGW64 ~/OneDrive/Documents (main)
+$ git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 1.74 KiB | 889.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/afrozkhanmyworkspace/project.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+Vagrant and Few Linux Commands:
+ mkdir -p vagrant/VM/centos
+    2  mkdir vagrant/VM/redhat
+    3  cd vagrant/VM/centos/
+    4  vagrant init centos
+    5  clear
+    6  cd ..
+    7  ls
+    8  mv redhat/ ubuntu
+    9  ls
+   10  clear
+   11  vagrant init eurolinux-vagrant/centos-stream-9 --box-version 9.0.47
+   12  vagrant init eurolinux-vagrant/centos-stream-9
+   13  ls
+   14  vagrant remove eurolinux-vagrant/centos-stream-9
+   15  vagrant drop eurolinux-vagrant/centos-stream-9
+   16  vagrant destroy centos
+   17  vagrant destroy eurolinux-vagrant/centos-stream-9
+   18  ls -
+   19  cat vagrantfile
+   20  vagrant destroy centos-stream-9
+   21  ls -l
+   22  cd centos/
+   23  ll
+   24  cd ..
+   25  ls
+   26  mv Vagrantfile centos/
+   27  cd centos/
+   28  ls Vagrantfile
+   29  cd ..
+   30  ls Vagrantfile
+   31  cd centos/
+   32  ls
+   33  vagrant up
+   34  cd
+   35  rm -rvf vagrant/
+   36  ls =l
+   37  ls -l
+   38  pwd
+   39  F:
+   40  cd F:
+   41  pwd
+   42  cd /
+   43  pwd
+   44  ls
+   45  mkdir /Vagrant/VM
+   46  mkdir -p /Vagrant/VM
+   47  cd
+   48  mkdir -p /Vagrant/VM
+   49  mkdir vagrant
+   50  rmdir vagrant/
+   51  ls -l
+   52  cd f:
+   53  mkdir vagrant/vm
+   54  mkdir -p vagrant/vm
+   55  cd vagrant/
+   56  pwd
+   57  mkdir centos ubuntu
+   58  ls
+   59  rm -rvf centos/ ubuntu/
+   60  cd vm/
+   61  mkdir centos ubuntu
+   62  ls
+   63  cd centos/
+   64  vagrant init eurolinux-vagrant/centos-stream-9
+   65  cat Vagrantfile
+   66  vagrant up
+   67  rm Vagrantfile
+   68  vagrant init eurolinux-vagrant/centos-stream-9 --box-version 9.0.47
+   69  vagrant up
+   70  cd ..
+   71  rm -rvf centos/
+   72  mkdir centos
+   73  ll
+   74  cd centos/
+   75  vagrant init eurolinux-vagrant/centos-stream-9 --box-version 9.0.47
+   76  vagrant up
+   77  vagrant up
+   78  ssh vagrant
+   79  ssh centos
+   80  vagrant ssh
+   81  vagrant
+   82  vagrant show list
+   83  vagrant list
+   84  clear
+   85  vagrant halt
+   86  vagrant status
+   87  vagrant global-status
+   88  clear
+   89  vagrant up
+   90  vagrant global-status
+   91  cd ..
+   92  cd ubuntu/
+   93  vagrant init ubuntu/jammy64
+   94  vagrant up
+   95  vagrant box list
+   96  vagrant global status
+   97  vagrant global-status
+   98  vagrant halt
+   99  vagrant global-status
+  100  cd /f/vagrant/vm/
+  101  cd /f
+  102  ls =;l
+  103  ls -l
+  104  clear
+  105  vagrant box list
+  106  vagrant global-status
+  107  vagrant up
+  108  cd vagrant/ubu
+  109  cd vagrant/vm/ubuntu/
+  110  vagrant up
+  111  ssh vagrant
+  112  vagrant ssh
+  113  vagrant status
+  114  vagrant global-status
+  115  vagrant halt
+  116  vagrant reload
+  117  vagrant up
+  118  vagrant ssh
+  119  cd /f/vagrant/vm/centos/
+  120  vagrant ssh
+  121  vagrant halt
+  122  vagrant up
+  123  vagrant global-status
+  124  vagrant ssh
+  125  vagrant box list
+  126  cd /f/vagrant/vm/ubuntu/
+  127  vagrant ssh
+  128  vagrant up
+  129  vagrant ssh
+  130  cd ..
+  131  cd centos/
+  132  vagrant ssh
+  133  vagrant ssh
+  134  exit
+  135  grep -iR firewall *
+  136  grep -i firewall *
+  137  grep -iR firewall *
+  138  clear
+  139  exit
+  140  grep -i firewall *
+  141  grep -i firewall*
+  142  clear
+  143  cd
+  144  vagrant global-status
+  145  cd /f/vagrant/vm/centos/
+  146  vagrant ssh
+  147  vagrant status
+  148  vagrant up
+  149  vagrant ssh
+  150  exit
+
